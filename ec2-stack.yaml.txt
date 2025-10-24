@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Stack para criar uma instância EC2 - Desafio DIO
+
+Parameters:
+  KeyName:
+    Description: Nome do par de chaves EC2 para acesso SSH
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: Deve ser o nome de um par de chaves existente.
+
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: !Ref KeyName
+      ImageId: ami-0e83be366243f524a # Amazon Linux 2023 - região sa-east-1 (São Paulo)
+      Tags:
+        - Key: Name
+          Value: dio-ec2-cloudformation
+      SecurityGroups:
+        - !Ref InstanceSecurityGroup
+
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Permitir SSH e HTTP
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: dio-sg-cloudformation
+
+Outputs:
+  InstanceId:
+    Description: ID da instância criada
+    Value: !Ref EC2Instance
+  PublicIP:
+    Description: IP público da instância
+    Value: !GetAtt EC2Instance.PublicIp
+  SecurityGroup:
+    Description: Nome do grupo de segurança criado
+    Value: !Ref InstanceSecurityGroup
