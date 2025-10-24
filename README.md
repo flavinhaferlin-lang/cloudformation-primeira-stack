@@ -19,6 +19,12 @@ Documentar a criação da minha primeira Stack utilizando **AWS CloudFormation**
     ├── captura-de-tela-cloudformation-criado.png
     └── captura-de-tela-cloudformation-ultimo.png
 
+## Capturas de tela
+
+![Criação da pilha](images/captura-cloudformation-inicio.png)
+![Stack criada com sucesso](images/captura-cloudformation-final.png)
+![Eventos da stack](images/captura-cloudformation-eventos.png)
+
 
 ---
 
