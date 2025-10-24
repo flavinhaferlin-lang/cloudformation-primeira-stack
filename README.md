@@ -12,13 +12,13 @@ Documentar a criação da minha primeira Stack utilizando **AWS CloudFormation**
 ---
 
 ## 📂 Estrutura do Repositório
-cloudformation-primeira-stack/
+📁 dio-cloudformation-stack/
 ├── README.md
-├── templates/
-│ └── s3-bucket.yaml
 └── images/
-├── create-stack.png
-├── outputs.png
+    ├── captura-de-tela-cloudformation.png
+    ├── captura-de-tela-cloudformation-criado.png
+    └── captura-de-tela-cloudformation-ultimo.png
+
 
 ---
 
